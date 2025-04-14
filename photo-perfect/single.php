@@ -28,12 +28,12 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php
+	<?php
 	/**
 	 * Hook - photo_perfect_action_sidebar.
 	 *
 	 * @hooked: photo_perfect_add_sidebar - 10
 	 */
 	do_action( 'photo_perfect_action_sidebar' );
-?>
-<?php get_footer(); ?>
+
+get_footer();

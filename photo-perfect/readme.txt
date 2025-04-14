@@ -3,7 +3,7 @@
 Contributors: wenthemes
 Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, sticky-post, translation-ready, theme-options, threaded-comments, footer-widgets, photography, editor-style, custom-logo
 Requires at least: 5.6
-Tested up to: 6.4
+Tested up to: 6.7
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -21,6 +21,9 @@ Photo Perfect is a responsive photography WordPress Theme for professional photo
 3. Click Activate to use your new theme right away.
 
 == Changelog ==
+
+= 2.1.2 - Mar 14 2025 =
+* WP 6.7 compatibility
 
 = 2.1.1 - Mar 14 2024 =
 * WP 6.4 compatibility

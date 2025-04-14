@@ -7,6 +7,7 @@
  * @package Photo_Perfect
  */
 ?>
+
 <div id="sidebar-primary" class="widget-area" role="complementary">
   <div class="area-wrapper">
 	<?php if ( is_active_sidebar( 'sidebar-1' ) ) :  ?>

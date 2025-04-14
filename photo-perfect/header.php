@@ -9,7 +9,8 @@
  * @package Photo_Perfect
  */
 
-?><?php
+?>
+<?php
 	/**
 	 * Hook - photo_perfect_action_doctype.
 	 *
@@ -84,4 +85,3 @@
 	   * Hook - photo_perfect_action_content.
 	   */
 	  do_action( 'photo_perfect_action_content' );
-		?>
