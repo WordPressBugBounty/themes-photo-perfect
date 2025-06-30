@@ -1,11 +1,11 @@
-# Copyright (C) 2015-2022 WEN Themes
+# Copyright (C) 2015-2025 WEN Themes
 # This file is distributed under the GNU General Public License v3 or later.
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Photo Perfect\n"
 "Report-Msgid-Bugs-To: https://wenthemes.com/contact/\n"
-"POT-Creation-Date: 2025-04-14 16:47+0545\n"
+"POT-Creation-Date: 2025-06-30 12:57+0545\n"
 "PO-Revision-Date: 2016-12-07 01:05-0500\n"
 "Last-Translator: WEN Themes <info@wenthemes.com>\n"
 "Language-Team: WEN Themes <info@wenthemes.com>\n"
@@ -66,101 +66,101 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: ../functions.php:39
+#: ../functions.php:41
 msgid "Primary Menu"
 msgstr ""
 
-#: ../functions.php:40
+#: ../functions.php:42
 msgid "Footer Menu"
 msgstr ""
 
-#: ../functions.php:41
+#: ../functions.php:43
 msgid "Social Menu"
 msgstr ""
 
-#: ../functions.php:42
+#: ../functions.php:44
 msgid "404 Menu"
 msgstr ""
 
-#: ../functions.php:123
+#: ../functions.php:126
 msgid "Primary Sidebar"
 msgstr ""
 
-#: ../functions.php:125
+#: ../functions.php:128
 msgid "Add widgets here to appear in your Primary Sidebar."
 msgstr ""
 
-#: ../functions.php:159
+#: ../functions.php:164
 msgid "expand child menu"
 msgstr ""
 
-#: ../functions.php:160
+#: ../functions.php:165
 msgid "collapse child menu"
 msgstr ""
 
-#: ../functions.php:186
+#: ../functions.php:192
 msgctxt "Open Sans: on or off"
 msgid "on"
 msgstr ""
 
-#: ../functions.php:192
+#: ../functions.php:198
 msgctxt "Arizonia: on or off"
 msgid "on"
 msgstr ""
 
-#: ../functions.php:243
+#: ../functions.php:250
 msgid "Small"
 msgstr ""
 
-#: ../functions.php:244
+#: ../functions.php:251
 msgid "S"
 msgstr ""
 
-#: ../functions.php:249
+#: ../functions.php:256
 msgid "Normal"
 msgstr ""
 
-#: ../functions.php:250
+#: ../functions.php:257
 msgid "M"
 msgstr ""
 
-#: ../functions.php:255 ../inc/helper/options.php:139
+#: ../functions.php:262 ../inc/helper/options.php:139
 msgid "Large"
 msgstr ""
 
-#: ../functions.php:256
+#: ../functions.php:263
 msgid "L"
 msgstr ""
 
-#: ../functions.php:261
+#: ../functions.php:268
 msgid "Huge"
 msgstr ""
 
-#: ../functions.php:262
+#: ../functions.php:269
 msgid "XL"
 msgstr ""
 
-#: ../functions.php:272
+#: ../functions.php:279
 msgid "White"
 msgstr ""
 
-#: ../functions.php:277
+#: ../functions.php:284
 msgid "Black"
 msgstr ""
 
-#: ../functions.php:282
+#: ../functions.php:289
 msgid "Gray"
 msgstr ""
 
-#: ../functions.php:287
+#: ../functions.php:294
 msgid "Blue"
 msgstr ""
 
-#: ../functions.php:292
+#: ../functions.php:299
 msgid "Dark Blue"
 msgstr ""
 
-#: ../functions.php:297
+#: ../functions.php:304
 msgid "Orange"
 msgstr ""
 
