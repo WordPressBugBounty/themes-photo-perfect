@@ -4,10 +4,10 @@ Theme URI: https://wenthemes.com/item/wordpress-themes/photo-perfect/
 Author: WEN Themes
 Author URI: https://wenthemes.com/
 Description: Photo Perfect is a responsive photography WordPress Theme for professional photographer, photo bloggers and creative peeps. Theme is very easy to customize, maintain and use on a daily basis. If you are looking to make a strong online brand presence through their creative and innovative work then this theme is made for you. Official Support Forum: https://themepalace.com/support-forum/ Full Demo: https://wenthemes.com/theme-demos/?demo=photo-perfect
-Version: 2.2.1
+Version: 2.3
 Requires at least: 5.9
-Tested up to: 6.9
-Requires PHP: 5.6
+Tested up to: 7.1
+Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: photo-perfect
@@ -2726,7 +2726,7 @@ a.scrollup {
 
 .photo_perfect_widget_social ul li a[href*="wordpress.org"]::before,
 .photo_perfect_widget_social ul li a[href*="wordpress.com"]::before {
-    content: "\f19a";
+  content: "\f19a";
 }
 
 .photo_perfect_widget_social ul li a[href*="tiktok.com"]::before {
@@ -2746,40 +2746,40 @@ a.scrollup {
 }
 
 .photo_perfect_widget_social ul li a[href*="spotify.com"]:before {
-    content: "\f1bc";
+  content: "\f1bc";
 }
 
 .photo_perfect_widget_social ul li a[href*="snapchat.com"]:before {
-    content: "\f2ab";
+  content: "\f2ab";
 }
 
 .photo_perfect_widget_social ul li a[href*="apple.com"]:before {
-    content: "\f179";
+  content: "\f179";
 }
 
 .photo_perfect_widget_social ul li a[href*="amazon.com"]:before {
-    content: "\f270";
+  content: "\f270";
 }
 
 .photo_perfect_widget_social ul li a[href*="bandcamp.com"]:before {
-    content: "\f2d5";
+  content: "\f2d5";
 }
 
 .photo_perfect_widget_social ul li a[href*="behance.com"]:before {
-    content: "\f1b4";
+  content: "\f1b4";
 }
 
 .photo_perfect_widget_social ul li a[href*="deviantart.com"]:before {
-    content: "\f1bd";
+  content: "\f1bd";
 }
 
 .photo_perfect_widget_social ul li a[href*="etsy.com"]:before {
-    content: "\f2d7";
+  content: "\f2d7";
 }
 
 .photo_perfect_widget_social ul li a[href*="t.me"]:before,
 .photo_perfect_widget_social ul li a[href*="telegram.org"]:before {
-    content: "\f2c6";
+  content: "\f2c6";
 }
 
 /*social links hover effect */
@@ -2894,40 +2894,40 @@ a.scrollup {
 }
 
 .photo_perfect_widget_social ul li a[href*="spotify.com"]:hover {
-    background-color: #1ed760;
+  background-color: #1ed760;
 }
 
 .photo_perfect_widget_social ul li a[href*="snapchat.com"]:hover {
-    background-color: #FFFC00;
+  background-color: #FFFC00;
 }
 
 .photo_perfect_widget_social ul li a[href*="apple.com"]:hover {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 .photo_perfect_widget_social ul li a[href*="amazon.com"]:hover {
-    background-color: #f90;
+  background-color: #f90;
 }
 
 .photo_perfect_widget_social ul li a[href*="bandcamp.com"]:hover {
-    background-color: #639aa9;
+  background-color: #639aa9;
 }
 
 .photo_perfect_widget_social ul li a[href*="behance.com"]:hover {
-    background-color: #1769FF;
+  background-color: #1769FF;
 }
 
 .photo_perfect_widget_social ul li a[href*="deviantart.com"]:hover {
-    background-color: #05CC47;
+  background-color: #05CC47;
 }
 
 .photo_perfect_widget_social ul li a[href*="etsy.com"]:hover {
-    background-color: #F1641E;
+  background-color: #F1641E;
 }
 
 .photo_perfect_widget_social ul li a[href*="t.me"]:hover,
 .photo_perfect_widget_social ul li a[href*="telegram.org"]:hover {
-    background: #0088cc;
+  background: #0088cc;
 }
 
 /*footer widget area*/

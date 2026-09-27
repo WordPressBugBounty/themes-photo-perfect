@@ -3,8 +3,8 @@
 Contributors: wenthemes
 Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, sticky-post, translation-ready, theme-options, threaded-comments, footer-widgets, photography, editor-style, custom-logo
 Requires at least: 5.9
-Tested up to: 6.9
-Requires PHP: 5.6
+Tested up to: 7.1
+Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,6 +21,13 @@ Photo Perfect is a responsive photography WordPress Theme for professional photo
 3. Click Activate to use your new theme right away.
 
 == Changelog ==
+
+= 2.3 - Sep 27 2026 =
+* Bug Fixed: Site no longer crashes when Google Fonts cannot be reached; fonts now fall back gracefully
+* Bug Fixed: Photo gallery lightbox no longer depends on jQuery Migrate
+* Bug Fixed: Site no longer crashes on hosts where WordPress can only write files over FTP or SSH; fonts load from Google there instead
+* Updated: Minimum required PHP version is now 7.4, matching WordPress
+* WP 7.1 compatibility
 
 = 2.2.1 - Jan 06 2026 =
 * WP 6.9 compatibility
@@ -133,7 +140,7 @@ Photo Perfect is a responsive photography WordPress Theme for professional photo
 
 == Copyright ==
 
-Photo Perfect WordPress Theme, Copyright 2015-2025 wenthemes.com
+Photo Perfect WordPress Theme, Copyright 2015-2026 wenthemes.com
 Photo Perfect distributed under the terms of the GNU General Public License v3
 
 == Credits ==

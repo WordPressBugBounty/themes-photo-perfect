@@ -448,7 +448,7 @@
             generate : function(){
                 var thumbsList = $('<ul>'),
                     elements   = [],
-                    len        = this.imageLinks.size(),
+                    len        = this.imageLinks.length,
                     title, thumbSrc, link, type, i;
 
                 for( i = 0; i < len; i++ ){

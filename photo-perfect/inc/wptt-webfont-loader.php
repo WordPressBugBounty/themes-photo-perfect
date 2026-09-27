@@ -138,6 +138,13 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 */
 		public function get_url() {
 
+			// Can't write files here: use an earlier local copy if there is one, else load from Google.
+			if ( ! $this->get_filesystem() ) {
+				return file_exists( $this->get_local_stylesheet_path() )
+					? $this->get_local_stylesheet_url()
+					: $this->remote_url;
+			}
+
 			// Check if the local stylesheet exists.
 			if ( $this->local_file_exists() ) {
 
@@ -189,6 +196,17 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			// Get the remote URL contents.
 			$this->remote_styles = $this->get_remote_url_contents();
 
+			// Google Fonts could not be reached: fall back without caching an empty file.
+			if ( ! $this->remote_styles ) {
+				return '';
+			}
+
+			// Can't write files here: use Google's CSS unchanged, so fonts load from Google.
+			if ( ! $this->get_filesystem() ) {
+				$this->css = $this->remote_styles;
+				return $this->css;
+			}
+
 			// Get an array of locally-hosted files.
 			$files = $this->get_local_files_from_css();
 
@@ -222,18 +240,15 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		public function get_local_stylesheet_contents() {
 			$local_path = $this->get_local_stylesheet_path();
 
-			// Check if the local stylesheet exists.
-			if ( $this->local_file_exists() ) {
-
-				// Attempt to update the stylesheet. Return false on fail.
-				if ( ! $this->write_stylesheet() ) {
-					return false;
-				}
+			// Nothing cached yet. get_styles() fetches and writes it, so writing from
+			// here as well made the two methods call each other endlessly on a failed fetch.
+			if ( ! file_exists( $local_path ) ) {
+				return false;
 			}
 
-			ob_start();
-			include $local_path;
-			return ob_get_clean();
+			// Read the cached CSS as text rather than include()-ing it as PHP.
+			$filesystem = $this->get_filesystem();
+			return $filesystem ? $filesystem->get_contents( $local_path ) : false;
 		}
 
 		/**
@@ -280,6 +295,10 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * @return array Returns an array of remote URLs and their local counterparts.
 		 */
 		public function get_local_files_from_css() {
+			if ( ! $this->get_filesystem() ) {
+				return array();
+			}
+
 			$font_files = $this->get_remote_files_from_css();
 			$stored     = get_site_option( 'downloaded_font_files', array() );
 			$change     = false; // If in the end this is true, we need to update the cache option.
@@ -444,6 +463,19 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			$file_path  = $this->get_local_stylesheet_path();
 			$filesystem = $this->get_filesystem();
 
+			if ( ! $filesystem ) {
+				return false;
+			}
+
+			// Get the CSS first so a failed fetch never leaves an empty cached stylesheet.
+			if ( ! $this->css ) {
+				$this->get_styles();
+			}
+
+			if ( ! $this->css ) {
+				return false;
+			}
+
 			if ( ! defined( 'FS_CHMOD_DIR' ) ) {
 				define( 'FS_CHMOD_DIR', ( 0755 & ~ umask() ) );
 			}
@@ -459,11 +491,6 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			}
 
 			// If we got this far, we need to write the file.
-			// Get the CSS.
-			if ( ! $this->css ) {
-				$this->get_styles();
-			}
-
 			// Put the contents in the file. Return false if that fails.
 			if ( ! $filesystem->put_contents( $file_path, $this->css ) ) {
 				return false;
@@ -532,7 +559,9 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 */
 		public function get_base_path() {
 			if ( ! $this->base_path ) {
-				$this->base_path = apply_filters( 'wptt_get_local_fonts_base_path', $this->get_filesystem()->wp_content_dir() );
+				// Same value WP_Filesystem_Direct::wp_content_dir() returns, without asking the filesystem:
+				// on FTP/SSH hosts that call tried to connect and fatally failed on PHP 8.
+				$this->base_path = apply_filters( 'wptt_get_local_fonts_base_path', trailingslashit( str_replace( '\\', '/', WP_CONTENT_DIR ) ) );
 			}
 			return $this->base_path;
 		}
@@ -610,7 +639,8 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * @return bool
 		 */
 		public function delete_fonts_folder() {
-			return $this->get_filesystem()->delete( $this->get_fonts_folder(), true );
+			$filesystem = $this->get_filesystem();
+			return $filesystem ? $filesystem->delete( $this->get_fonts_folder(), true ) : false;
 		}
 
 		/**
@@ -623,12 +653,24 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		protected function get_filesystem() {
 			global $wp_filesystem;
 
+			if ( ! function_exists( 'WP_Filesystem' ) ) {
+				require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
+			}
+
+			// Fonts are only cached locally when WordPress can write files directly. FTP/SSH
+			// hosts need credentials a visitor's page load does not have; using that
+			// unconnected filesystem crashed the site on PHP 8 (ftp_nlist() on null).
+			if ( 'direct' !== get_filesystem_method() ) {
+				return false;
+			}
+
 			// If the filesystem has not been instantiated yet, do it here.
 			if ( ! $wp_filesystem ) {
-				if ( ! function_exists( 'WP_Filesystem' ) ) {
-					require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
-				}
 				WP_Filesystem();
+			}
+
+			if ( ! $wp_filesystem || 'direct' !== $wp_filesystem->method ) {
+				return false;
 			}
 			return $wp_filesystem;
 		}
